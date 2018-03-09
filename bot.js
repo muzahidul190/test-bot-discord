@@ -1,25 +1,14 @@
-const Discord = require('discord.js');
-const bot = new Discord.Client({disableEveryone: true});
+const Discord = require("discord.js");
+const client = new Discord.Client();
 
-bot.on('ready', async () => {
-    console.log('I am ready!');
-    bot.user.setActivity("Getting Constructed", {type: "WATCHING"});
+client.on('ready', () => {
+  console.log(`Logged in as ${client.user.tag}!`);
 });
 
-bot.on('message', async message => {
-    if(message.author.bot) return;
-    if(message.channel.type === "dm"){
-        return message.reply('Don\'t DM me now. I\'m still a kid :cold_sweat:');
-    }
-    
-    let messageArray = message.content.split(" ");
-    let cmd = messageArray[0];
-    let args = messageArray.slice(1);
-    
-    if (cmd === 'bott') {
-        return message.channel.sendMessage('Testing bot');  	
-    }
-    
+client.on('message', msg => {
+  if (msg.content === 'ping') {
+    msg.reply('Pong!');
+  }
 });
 
 // THIS  MUST  BE  THIS  WAY
