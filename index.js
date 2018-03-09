@@ -6,6 +6,12 @@ bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
   bot.user.setGame("Getting Coded on GitHub");
 });
+// Create an event listener for new guild members
+bot.on('guildMemberAdd', member => {
+  const channel = member.guild.channels.find('name', 'welcome');
+  if (!channel) return;
+  channel.send(`Welcome to the server, ${member}`);
+});
 
 bot.on("message", async message => {
   if(message.author.bot) return;
