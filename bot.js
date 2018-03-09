@@ -1,5 +1,5 @@
 const Discord = require("discord.js");
-const client = new Discord.bot();
+const client = new Discord.bot({disableEveryone: true});
 
 bot.on('ready', () => {
   console.log("Logged in as ${bot.user.tag}!");
