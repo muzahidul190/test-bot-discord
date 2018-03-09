@@ -4,7 +4,10 @@ const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
-  bot.user.setGame("Getting Coded on GitHub");
+  //bot.user.setGame("Getting Coded on GitHub");
+  bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
+  .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
+  .catch(console.error);
 });
 // Create an event listener for new guild members
 bot.on('guildMemberAdd', member => {
