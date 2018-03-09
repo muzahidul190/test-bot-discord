@@ -8,4 +8,5 @@ bot.on("ready", async () => {
 });
 
 
-bot.login(botconfig.token);
+// THIS  MUST  BE  THIS  WAY
+bot.login(process.env.BOT_TOKEN);
