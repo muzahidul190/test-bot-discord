@@ -1,0 +1,14 @@
+{
+  "name": "firstbot",
+  "version": "1.0.0",
+  "description": "This is my first bot to be coded",
+  "main": "index.js",
+  "scripts": {
+    "test": "tst"
+  },
+  "author": "muzahid",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^11.3.2"
+  }
+}
