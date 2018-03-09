@@ -4,7 +4,7 @@
   "description": "This is my first bot to be coded",
   "main": "index.js",
   "scripts": {
-    "test": "tst"
+    "start": "node index.js"
   },
   "author": "muzahid",
   "license": "ISC",
