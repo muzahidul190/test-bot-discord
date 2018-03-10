@@ -4,7 +4,6 @@ const bot = new Discord.Client({disableEveryone: true});
 
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
-  //bot.user.setGame("Getting Coded on GitHub");
   bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
   .catch(console.error);
@@ -42,7 +41,7 @@ bot.on("message", async message => {
       .addField("Joined on:", message.member.joinedAt)
       .setFooter("Adding more Details....");
 
-      return message.channel.send(userembed);
+      return message.channel.send(`Hey, Here's your profile information... ${userembed}`);
     });
 
   }
