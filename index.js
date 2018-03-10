@@ -40,8 +40,7 @@ bot.on("message", async message => {
       .addField("User's name:", message.author.username)
       .addField("ID:", message.author.id)
       .addField("Joined on:", message.member.joinedAt)
-      .addField("Registered on:", message.member.registeredAt)
-      .setFooter("Huh!, Are you happy?");
+      .setFooter("Adding more Details....");
 
       return message.channel.send(userembed);
     });
