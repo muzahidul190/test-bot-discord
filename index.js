@@ -28,6 +28,25 @@ bot.on("message", async message => {
   if(cmd === `${prefix}bott`){
     return message.channel.send("Hello!");
   }
+    if(cmd === `${prefix}ui`){
+    return message.reply("Here is your profile Info:").then(() =>{
+
+      let bicon = message.author.displayAvatarURL;
+      let userembed = new Discord.RichEmbed()
+      .setTitle("User Details__")
+      .setDescription(`Details about ${message.author.username}`)
+      .setColor("#f920ea")
+      .setThumbnail(bicon)
+      .addField("User's name:", message.author.username)
+      .addField("ID:", message.author.id)
+      .addField("Joined on:", message.member.joinedAt)
+      .addField("Registered on:", message.member.registeredAt)
+      .setFooter("Huh!, Are you happy?");
+
+      return message.channel.send(userembed);
+    });
+
+  }
   if(cmd == 'invitelink'){
         return message.channel.send('Invitation link is https://discord.gg/crtrH5y');
 }
