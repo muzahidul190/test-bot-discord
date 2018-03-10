@@ -28,7 +28,6 @@ bot.on("message", async message => {
     return message.channel.send("Hello!");
   }
     if(cmd === `${prefix}ui`){
-    return message.reply("Here is your profile Info:").then(() =>{
 
       let bicon = message.author.displayAvatarURL;
       let userembed = new Discord.RichEmbed()
@@ -41,8 +40,7 @@ bot.on("message", async message => {
       .addField("Joined on:", message.member.joinedAt)
       .setFooter("Adding more Details....");
 
-      return message.channel.send(`Hey, Here's your profile information... ${userembed}`);
-    });
+      return message.channel.send(userembed);
 
   }
   if(cmd == 'invitelink'){
