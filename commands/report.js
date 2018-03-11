@@ -23,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
   message.delete().catch(O_o=>{});
 
   rChannel.send(`Reporter: <@${message.author.id}>\nReported User: <@${rUser.user.id}>`, rEnbed).then(() => {
-    message.author.send(`${rUser.user.username} has been reported and is submitted to server Admins.`);
+    message.author.send(`${rUser.user.username} has been reported and is submitted to server Admins.`, rEnbed);
   });
 }
 
