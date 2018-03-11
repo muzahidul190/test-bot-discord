@@ -2,11 +2,30 @@ const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
 const bot = new Discord.Client({disableEveryone: true});
 
+const fs = require("fs");
+bot.commands = new Discord.Collection();
+
+fs.readdir("./commands/", (err, files) => {
+  if(err) console.log(err);
+
+  let jsfile = files.filter(f => f.split(".").pop() === "js")
+  if(jsfile.length <= 0){
+    console.log("Couldn't find Commands!");
+    return;
+  }
+  jsfile.forEach((f, i) => {
+    let props = require(`./commands/${f}`);
+    console.log(`${f} loaded successfully!`);
+    bot.commands.set(props.help.name, props);
+  });
+});
+
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
   bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
   .catch(console.error);
+  bot.user.setStatus('idle');
 });
 // Create an event listener for new guild members
 bot.on('guildMemberAdd', member => {
@@ -29,28 +48,9 @@ bot.on("message", async message => {
   let cmd = messageArray[0];
   let args = messageArray.slice(1);
 
-  if(cmd === `${prefix}bott`){
-    return message.channel.send("Hello!");
-  }
-    if(cmd === `${prefix}ui`){
+  let commandfile = bot.commands.get(cmd.slice(prefix.length));
+  if(commandfile) commandfile.run(bot, message, args);
 
-      let bicon = message.author.displayAvatarURL;
-      let userembed = new Discord.RichEmbed()
-      .setTitle("User Details__")
-      .setDescription(`Details about ${message.author.username}`)
-      .setColor("#f920ea")
-      .setThumbnail(bicon)
-      .addField("User's name:", message.author.username)
-      .addField("ID:", message.author.id)
-      .addField("Joined on:", message.member.joinedAt)
-      .setFooter("Adding more Details....");
-
-      return message.channel.send(userembed);
-
-  }
-  if(cmd == 'invitelink'){
-        return message.channel.send('Invitation link is https://discord.gg/crtrH5y');
-}
 });
 
 
