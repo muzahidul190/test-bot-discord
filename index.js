@@ -12,7 +12,7 @@ bot.on("ready", async () => {
 bot.on('guildMemberAdd', member => {
   const channel = member.guild.channels.find('name', 'welcome');
   if (!channel) return;
-  channel.send(`Welcome to the server, ${member}`);
+  channel.send(`Hey ${member},\nWelcome to the server, \nPlease go to <#406136263977205760> to get all *self-assignable* roles. And Certainly, These *self-assignable* roles will help you to get access to important lounges which are currently :lock: locked to you.`);
 });
 
 bot.on("message", async message => {
