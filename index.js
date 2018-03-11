@@ -17,7 +17,7 @@ bot.on('guildMemberAdd', member => {
 bot.on('guildMemberRemove', member => {
   const channel = member.guild.channels.find('name', 'welcome');
   if (!channel) return;
-  channel.send(`HuH ${member.user.username},S/He left us!\nCertainly s/he is going to miss us a lot.`);
+  channel.send(`HuH!!! ${member.user.username},S/He left us!\nCertainly s/he is going to miss us a lot.`);
 });
 
 bot.on("message", async message => {
