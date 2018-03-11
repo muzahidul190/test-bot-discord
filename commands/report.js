@@ -6,11 +6,13 @@ module.exports.run = async (bot, message, args) => {
   let reason = args.join(" ").slice(22);
   if(!reason) return message.channel.send("Please enter reason... \n**Example:** \`\`report <mention user> <Reason>\`\`")
 
+  let icon = rUser.user.displayAvatarURL;
+  
   let rEnbed = new Discord.RichEmbed()
   .setTitle("Report__")
   .setDescription(`This message is to report ${rUser.user.username}`)
   .setColor("#ff0000")
-  // .setThumbnail(icon)
+  .setThumbnail(icon)
   .addField("Reported User", `${rUser.user.username}`)
   .addField("Reported User's ID", rUser.user.id)
   .addField("Time:", message.createdAt)
