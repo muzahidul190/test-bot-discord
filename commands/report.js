@@ -1,35 +1,30 @@
 const Discord = require("discord.js");
-const botconfig = require("../botconfig.json");
-const red = botconfig.red;
-const green = botconfig.green;
-const orange = botconfig.orange;
 
 module.exports.run = async (bot, message, args) => {
+  let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
+  if(!rUser) return message.channel.send("Can't find the user!");
+  let reason = args.join(" ").slice(22);
+  if(!reason) return message.channel.send("Please enter reason... \n**Example:** \`\`report <mention user> <Reason>\`\`")
 
-    if(args[0] == "help"){
-      message.reply("Usage: !report <user> <reason>");
-      return;
-    }
-    let rUser = message.guild.member(message.mentions.users.first() || message.guild.members.get(args[0]));
-    if(!rUser) return message.channel.send("Couldn't find user.");
-    let rreason = args.join(" ").slice(22);
+  let rEnbed = new Discord.RichEmbed()
+  .setTitle("Report__")
+  .setDescription(`This message is to report ${rUser.user.username}`)
+  .setColor("#ff0000")
+  // .setThumbnail(icon)
+  .addField("Reported User", `${rUser.user.username}`)
+  .addField("Reported User's ID", rUser.user.id)
+  .addField("Time:", message.createdAt)
+  .addField("Reported By", message.author.username)
+  .addField("Reason", `${reason}`);
 
-    let reportEmbed = new Discord.RichEmbed()
-    .setDescription("Reports")
-    .setColor(orange)
-    .addField("Reported User", `${rUser} with ID: ${rUser.id}`)
-    .addField("Reported By", `${message.author} with ID: ${message.author.id}`)
-    .addField("Channel", message.channel)
-    .addField("Time", message.createdAt)
-    .addField("Reason", rreason);
+  let rChannel = message.guild.channels.find(`name`, "complains");
+  if(!rChannel) return message.channel.send("Reporting channel not found!");
 
-    let reportschannel = message.guild.channels.find(`name`, "reports");
-    if(!reportschannel) return message.channel.send("Couldn't find reports channel.");
+  message.delete().catch(O_o=>{});
 
-
-    message.delete().catch(O_o=>{});
-    reportschannel.send(reportEmbed);
-
+  rChannel.send(`Reporter: <@${message.author.id}>\nReported User: <@${rUser.user.id}>`, rEnbed).then(() => {
+    message.author.send(`${rUser.user.username} has been reported and is submitted to server Admins.`);
+  });
 }
 
 module.exports.help = {
