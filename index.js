@@ -41,7 +41,7 @@ bot.on('guildMemberRemove', member => {
 
 bot.on("message", async message => {
   if(message.author.bot) return;
-  if(message.channel.type === "dm") return message.channel.send("Hey, What\'s up? I\'m still under construction. Don\'t DM-me now.");
+  if(message.channel.type === "dm") return message.channel.send("Hey, What\'s up? I\'m still under construction. Don\'t Dme now.");
 
   let prefix = botconfig.prefix;
   let messageArray = message.content.split(" ");
