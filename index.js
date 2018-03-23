@@ -51,8 +51,7 @@ bot.on("message", async message => {
   let commandfile = bot.commands.get(cmd.slice(prefix.length));
   if(commandfile) commandfile.run(bot, message, args);
   if(message == "invite"){
-      return message.channel.send('The one and only direct invite link of the server is:
-https://discord.gg/crtrH5y');
+      return message.channel.send('The one and only direct invite link of the server is: https://discord.gg/crtrH5y');
   }
 
 });
