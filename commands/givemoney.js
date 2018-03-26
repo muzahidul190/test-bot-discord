@@ -14,7 +14,7 @@ module.exports.run = async (bot, message, args) => {
     if(!args[0] || !args[1]) return message.channel.send(`Write in this formate...\n\`\`give <@mention receiver> <Amount>\`\``);
 
   if(!coins[pUser.id]){
-    return message.chennel.send(`Sorry, The receiver \(${pUser.username}\) don\'t have an account. Ask him to open a bank account by typing \`\`bankregister\`\` in <#427944880170336289> first. Then try to donate him.`);
+     return message.channel.send(`Sorry, The receiver \(${pUser.user.username}\) don\'t have an account. Ask him to open a bank account by typing \`\`bankregister\`\` in <#427944880170336289> first. Then try to donate him.`);
   }
 
   let pCoins = coins[pUser.id].coins;
