@@ -2,6 +2,7 @@ const Discord = require("discord.js");
 let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
+  if(message.channel.id !== `427944880170336289`) return message.channel.send(`\`\`bal\`\` command works only in <#427944880170336289> channel.`);
   let cUser = message.mentions.users.first() || message.author;
   let dUser = message.author.id;
   if(!cUser){
