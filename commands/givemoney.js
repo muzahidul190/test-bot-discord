@@ -11,12 +11,10 @@ module.exports.run = async (bot, message, args) => {
 
   let pUser = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
   
-    if(!args[0] || !args[1]) return message.channel.send(`Write in this formate...\n\`\`give <@mention reciever> <Amount>\`\``);
+    if(!args[0] || !args[1]) return message.channel.send(`Write in this formate...\n\`\`give <@mention receiver> <Amount>\`\``);
 
   if(!coins[pUser.id]){
-    coins[pUser.id] = {
-      coins: 0
-    };
+    return message.chennel.send(`Sorry, The receiver \(${pUser.username}\) don\'t have an account. Ask him to open a bank account by typing \`\`bankregister\`\` in <#427944880170336289> first. Then try to donate him.`);
   }
 
   let pCoins = coins[pUser.id].coins;
@@ -25,7 +23,7 @@ module.exports.run = async (bot, message, args) => {
   let stod = coins[message.author.id].time;
   let stor = coins[pUser.id].time;
 
-  if(sCoins < args[0]) return message.reply("Not enough coins there!");
+  if(sCoins < args[1]) return message.reply("Not enough Balance there!");
 
   coins[message.author.id] = {
     coins: sCoins - parseInt(args[1]),
@@ -37,10 +35,10 @@ module.exports.run = async (bot, message, args) => {
     time: stor
   };
 
-  message.channel.send(`${message.author} has given ${pUser} ${args[1]} coins.`);
-
-  fs.writeFile("./coins.json", JSON.stringify(coins, null, 2), (err) => {
-    if(err) cosole.log(err)
+  return message.channel.send(`${message.author} has given ${pUser} ${args[1]} coins.`).then(() => {
+      fs.writeFile("./coins.json", JSON.stringify(coins, null, 2), (err) => {
+       if(err) cosole.log(err)
+      });
   });
 
 
