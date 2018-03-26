@@ -9,7 +9,7 @@ module.exports.run = async (bot, message, args) => {
   let cooldown = 28800000;
   let amount = 250;
 
-  if(!coins[message.author.id]) return message.channel.send(`Please type \`\`bankresister\`\` to open an account.`);
+  if(!coins[message.author.id]) return message.channel.send(`Please type \`\`bankregister\`\` to open an account.`);
 
   let lastDaily = coins[message.author.id].time;
 
