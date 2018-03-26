@@ -21,16 +21,12 @@ module.exports.run = async (bot, message, args) => {
   if(uCoins === null) uCoins = 0;
 
 
-  let coinEmbed = new Discord.RichEmbed()
-  .setAuthor(cUser.username)
-  .setColor("#00FF00")
-  .addField("💰", uCoins)
-  .addField("Testing", tst);
+
 
   message.channel.send(`${cUser.username}\'s balance is **$${uCoins}**`);
 
 }
 
 module.exports.help = {
-  name: "coins"
+  name: "bal"
 }
