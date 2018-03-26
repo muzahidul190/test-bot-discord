@@ -4,7 +4,9 @@ let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
   console.log(`working!!`);
-  let cooldown = 15000;//28800000
+  if(message.channel.id !== `427942470932758528`) return messege.channel.send(`\`\`payday\`\` command works only in <#427942470932758528> channel.`);
+  
+  let cooldown = 28800000;
   let amount = 250;
 
   if(!coins[message.author.id]) return message.channel.send(`Please type \`\`bankresister\`\` to open an account.`);
