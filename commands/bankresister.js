@@ -3,7 +3,7 @@ const fs = require("fs");
 let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
-  //!pay @isatisfied 59345
+  if(message.channel.id !== `427944880170336289`) return message.channel.send(`\`\`bankresister\`\` command works only in <#427944880170336289> channel.`);
 
   if(!coins[message.author.id]){
     return message.channel.send(`Congratulations <@${message.author.id}>, your account is opened Successfully!`).then(() => {
