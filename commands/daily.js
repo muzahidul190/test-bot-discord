@@ -4,7 +4,7 @@ let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
   console.log(`working!!`);
-  if(message.channel.id !== `427942470932758528`) return messege.channel.send(`\`\`payday\`\` command works only in <#427942470932758528> channel.`);
+  if(message.channel.id !== `427942470932758528`) return message.channel.send(`\`\`payday\`\` command works only in <#427942470932758528> channel.`);
   
   let cooldown = 28800000;
   let amount = 250;
