@@ -3,7 +3,7 @@ const fs = require("fs");
 let coins = require("../coins.json");
 
 module.exports.run = async (bot, message, args) => {
-  //!pay @isatisfied 59345
+  if(message.channel.id !== `427944880170336289`) return message.channel.send(`\`\`give\`\` command works only in <#427944880170336289> channel.`);
 
   if(!coins[message.author.id]){
     return message.reply("You don't have any coins!")
@@ -45,5 +45,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "gv"
+  name: "give"
 }
