@@ -21,7 +21,7 @@ module.exports.run = async (bot, message, args) => {
       return message.channel.send(`${message.author.username}, you are already registered!`)
      }
     }else{
-      return;
+      return message.channel.send('Test Successful!');
      }
 
 }
