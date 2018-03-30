@@ -1,7 +1,7 @@
 const Discord = require("discord.js");
 let coins = require("../coins.json");
 
-module.exports.run = async (bot, message, args) => {
+module.exports.run = async (bot, message, args, con) => {
   let target = message.mentions.users.first() || message.author;
 
   con.query(`SELECT * FROM users WHERE sid = '${target.id}'`, (err, rows) => {
