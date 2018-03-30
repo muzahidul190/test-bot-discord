@@ -26,6 +26,10 @@ var con = mysql.createConnection({
   password: process.env.DB_PASS,//sawakSAHAK726251--7K336cULGd
   database: process.env.DB_NAME//id5207968_discordbot--sql10229343
 });
+con.connect(err => {
+  if(err) throw err;
+  console.log("Connected to the database!");
+});
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
   bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
