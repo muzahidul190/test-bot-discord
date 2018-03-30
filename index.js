@@ -1,5 +1,6 @@
 const botconfig = require("./botconfig.json");
 const Discord = require("discord.js");
+const mysql = require("mysql");
 const bot = new Discord.Client({disableEveryone: true});
 
 const fs = require("fs");
@@ -19,7 +20,12 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   });
 });
-
+var con = mysql.createConnection({
+  host: process.env.DB_HOST,//sql10.freesqldatabase.com
+  user: process.env.DB_USER,//id5207968_muzahidul190--sql10229343
+  password: process.env.DB_PASS,//sawakSAHAK726251--7K336cULGd
+  database: process.env.DB_NAME//id5207968_discordbot--sql10229343
+});
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
   bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
