@@ -65,7 +65,7 @@ bot.on("message", async message => {
   }  
   if(message == "test"){
     let db = process.env.DB_USER;
-      return message.channel.send('Here is ${db}');
+      return message.channel.send(`Here is ${db}`);
   }
 
 });
