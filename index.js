@@ -20,7 +20,7 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   });
 });
-var con = mysql.createConnection({
+/*var con = mysql.createConnection({
   host: "sql10.freesqldatabase.com",//sql10.freesqldatabase.com
   user: "sql10229343",//id5207968_muzahidul190--sql10229343
   password: "7K336cULGd",//sawakSAHAK726251--7K336cULGd
@@ -29,7 +29,7 @@ var con = mysql.createConnection({
 con.connect(err => {
   if(err) throw err;
   console.log("Connected to the database!");
-});
+});*/
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
   bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
