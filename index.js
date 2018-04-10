@@ -26,7 +26,7 @@ let DB_US = process.env.DB_USER;
 let DB_PA =  process.env.DB_PASS;
 let DB_NA = process.env.DB_NAME;
 
-var con = mysql.createConnection({
+/*var con = mysql.createConnection({
   host: DB_HO,
   user: DB_US,
   password: DB_PA,
