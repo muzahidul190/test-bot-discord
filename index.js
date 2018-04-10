@@ -20,11 +20,17 @@ fs.readdir("./commands/", (err, files) => {
     bot.commands.set(props.help.name, props);
   });
 });
-/*var con = mysql.createConnection({
-  host: "sql10.freesqldatabase.com",//sql10.freesqldatabase.com
-  user: "sql10229343",//id5207968_muzahidul190--sql10229343
-  password: "7K336cULGd",//sawakSAHAK726251--7K336cULGd
-  database: "sql10229343"//id5207968_discordbot--sql10229343
+
+let DB_HO = process.env.DB_HOST;
+let DB_US = process.env.DB_USER;
+let DB_PA =  process.env.DB_PASS;
+let DB_NA = process.env.DB_NAME;
+
+var con = mysql.createConnection({
+  host: DB_HO,
+  user: DB_US,
+  password: DB_PA,
+  database: DB_NA
 });
 con.connect(err => {
   if(err) throw err;
