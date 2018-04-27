@@ -69,10 +69,7 @@ bot.on("message", async message => {
   if(message == "invite"){
       return message.channel.send('The one and only direct invite link of the server is: https://discord.gg/crtrH5y');
   }  
-  if(message == "test"){
-    let db = process.env.DB_USER;
-      return message.channel.send(`Here is ${db}`);
-  }
+
 
 });
 
