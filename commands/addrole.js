@@ -5,7 +5,7 @@ module.exports.run = async (bot, message, args) => {
   //!addrole @andrew Dog Person
   if(!message.member.hasPermission("MANAGE_MEMBERS")) return message.reply("Ask an Admin or Mod to do this operation.");
   if(args[0] == "help"){
-    message.reply("Usage: addrole <user> <role>");
+    message.reply("Usage: \`\`arole <user> <role>\`\`");
     return;
   }
   let rMember = message.guild.member(message.mentions.users.first()) || message.guild.members.get(args[0]);
@@ -22,5 +22,5 @@ module.exports.run = async (bot, message, args) => {
 }
 
 module.exports.help = {
-  name: "addrole"
+  name: "arole"
 }
