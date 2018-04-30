@@ -87,8 +87,7 @@ bot.on("message", async message => {
     .addField("Bots :robot:", botmem)
     .addField("Members Online:", memon)
     .addField("Member dnd:", memdnd)
-    .addField("Member Idle:", memidl)
-    .addField("Member Offline:", memoff);
+    .addField("Member Idle:", memidl);
     return message.channel.send(`Member Information`, rEnbed);
   }
 
