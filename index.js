@@ -72,6 +72,10 @@ bot.on("message", async message => {
   if(message == `mmc`){
     let mem = message.guild.memberCount;
     let botmem = message.guild.members.filter(m => m.user.bot).size;
+    let memon = message.guild.members.filter(m => m.presence.status === "online").size;
+    let memdnd = message.guild.members.filter(m => m.presence.status === "dnd").size;
+    let memidl = message.guild.members.filter(m => m.presence.status === "idle").size;
+    let memoff = message.guild.members.filter(m => m.presence.status === "offline").size;
     let humanmem = eval(mem - botmem);
 
     let rEnbed = new Discord.RichEmbed()
@@ -80,7 +84,11 @@ bot.on("message", async message => {
     .setColor("#ffa500")
     .addField("Total Member", `${mem}`)
     .addField("Human", humanmem)
-    .addField("Bots :robot:", botmem);
+    .addField("Bots :robot:", botmem)
+    .addField("Members Online:", memon)
+    .addField("Member dnd:", memdnd)
+    .addField("Member Idle:", memidl)
+    .addField("Member Offline:", memoff);
     return message.channel.send(`Member Information`, rEnbed);
   }
 
