@@ -69,6 +69,20 @@ bot.on("message", async message => {
   if(message == "invite"){
       return message.channel.send('The one and only direct invite link of the server is: https://discord.gg/crtrH5y');
   }  
+  if(message == `mmc`){
+    let mem = message.guild.memberCount;
+    let botmem = message.guild.members.filter(m => m.user.bot).size;
+    let humanmem = eval(mem - botmem);
+
+    let rEnbed = new Discord.RichEmbed()
+    .setTitle("Member Count:__")
+    .setDescription(`Member Information of ${message.guild.name}`)
+    .setColor("#ffa500")
+    .addField("Total Member", `${mem}`)
+    .addField("Human", humanmem)
+    .addField("Bots :robot:", botmem);
+    return message.channel.send(`Member Information`, rEnbed);
+  }
 
 
 });
