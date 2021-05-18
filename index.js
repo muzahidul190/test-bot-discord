@@ -38,7 +38,7 @@ con.connect(err => {
 });*/
 bot.on("ready", async () => {
   console.log(`${bot.user.username} is online`);
-  bot.user.setActivity('Codes on GitHub', { type: 'WATCHING' })
+  bot.user.setActivity('Codes on PC', { type: 'WATCHING' })
   .then(presence => console.log(`Activity set to ${presence.game ? presence.game.name : 'none'}`))
   .catch(console.error);
   bot.user.setStatus('idle');
